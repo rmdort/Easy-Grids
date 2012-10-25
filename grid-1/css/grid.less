@@ -6,11 +6,9 @@
 @minSiteWidth: 768px; 
 @maxSiteWidth: 100%; 
 @gutter: 15px;
-@gutterPercentage: 100% * (@gutter/@siteWidth);
 
 .generateColumnWidth (@i){
 	width: 1% * @columnWidth * @i;	
-	//*width: (100% - @gutterPercentage)/@columns * @i - @gutterPercentage; /* IE 6 & 7 */
 }
 
 .generateBoxSizing(){

@@ -1,0 +1,133 @@
+// Variables
+
+$columns: 12; /* 12 Column Grid */
+$columnWidth: (100/$columns); /* Column Width Percentage */
+$siteWidth: 960px;
+$minSiteWidth: 768px; 
+$maxSiteWidth: 100%; 
+$gutter: 10px;
+
+@mixin generateColumnWidth ($i){
+	width: 1% * $columnWidth * $i;		
+}
+
+@mixin generateBoxSizing(){
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	*behavior: url(css/boxsizing.htc)
+}
+
+.row { 	
+	max-width: $siteWidth; 
+	min-width: $minSiteWidth; 
+	width: $maxSiteWidth; 
+	margin: 0 auto; 	
+	@include generateBoxSizing;
+}
+
+/* Nested Rows */
+
+.row .row { 
+	width: auto; 
+	max-width: none; 
+	min-width: 0; 
+	margin: 0  -$gutter; 
+}
+
+.row:before, .row:after { 
+	content: ""; 
+	display: table; 
+	clear: both;
+}
+
+/* IE 6 & 7 */
+
+.row { *zoom: 1; }
+
+.row-pad{
+	padding-bottom:$gutter;
+}
+
+/* Columns */
+
+.columns { 
+	float: left; 
+	min-height: 1px; 
+	padding:0 $gutter; 
+	position: relative; 
+	@include generateBoxSizing;	
+}
+
+.one{
+	@include generateColumnWidth(1);
+}
+
+.two{
+	@include generateColumnWidth(2);
+}
+
+.three{
+	@include generateColumnWidth(3);
+}
+
+.four{
+	@include generateColumnWidth(4);
+}
+
+.five{
+	@include generateColumnWidth(5);
+}
+
+.six{
+	@include generateColumnWidth(6);
+}
+
+.seven{
+	@include generateColumnWidth(7);
+}
+
+.eight{
+	@include generateColumnWidth(8);
+}
+
+.nine{
+	@include generateColumnWidth(9);
+}
+
+.ten{
+	@include generateColumnWidth(10);
+}
+
+.eleven{
+	@include generateColumnWidth(11);
+}
+
+.twelve{
+	@include generateColumnWidth(12);
+}
+
+
+/* Content */
+
+img, object, embed { max-width: 100%; height: auto; }
+
+/* Mobile */
+
+@media handheld, only screen and (max-width: 767px) {
+	
+	.row {
+		width: 100%;
+		min-width: 0;
+		margin-left: 0;
+		margin-right: 0;		
+	}
+	
+	.columns {
+		width: auto;
+		float: none;
+		margin-left: 0;
+		margin-right: 0;
+		padding-bottom:$gutter;		
+	}
+}
