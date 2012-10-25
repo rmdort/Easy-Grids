@@ -10,7 +10,7 @@ Only [Grid 3](http://rmdort.github.com/pick-your-grid/grid-3/) has IE 7 support
 
 * Just grids with no extra baggage
 * Very simple grid css file
-* Catered for modern browsers
+* Built for modern browsers
 * [Grid 3](http://rmdort.github.com/pick-your-grid/grid-3/) supports legacy IE 7
 
 ## To do
