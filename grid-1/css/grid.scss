@@ -1,15 +1,15 @@
 // Variables
 
 $columns: 12; /* 12 Column Grid */
-$columnWidth: 100/$columns; /* Column Width Percentage */
-$siteWidth: 960px;
-$minSiteWidth: 768px; 
-$maxSiteWidth: 100%; 
-$gutter: 15px;
-$gutterPercentage: 100% * ($gutter/$siteWidth);
+$column-width: 100/$columns; /* Column Width Percentage */
+$site-width: 960px;
+$min-site-width: 768px; 
+$max-site-width: 100%; 
+$column-spacing: 15px;
+$column-spacingPercentage: 100% * ($column-spacing/$site-width);
 
 @mixin generateColumnWidth ($i){
-	width: 1% * $columnWidth * $i;		
+	width: 1% * $column-width * $i;		
 }
 
 @mixin generateBoxSizing(){
@@ -19,12 +19,23 @@ $gutterPercentage: 100% * ($gutter/$siteWidth);
 	*behavior: url(css/boxsizing.htc)
 }
 
+@function convert-number-to-word($num) {
+  $count:1;
+  @each $word in one,two,three,four,five,six,seven,eight,nine,ten,eleven,
+    twelve,thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,
+    twenty,twentyone,twentytwo,twentythree,twentyfour{
+    @if ($count == $num) { @return $word; }
+    $count: $count + 1;
+  }
+  @return "invalid";
+}
+
 .row { 	
-	max-width: $siteWidth; 
-	min-width: $minSiteWidth - $gutter; 
-	width: $maxSiteWidth; 
+	max-width: $site-width; 
+	min-width: $min-site-width - $column-spacing; 
+	width: $max-site-width; 
 	margin: 0 auto; 
-	padding-left: $gutter;
+	padding-left: $column-spacing;
 	@include generateBoxSizing;
 }
 
@@ -34,7 +45,7 @@ $gutterPercentage: 100% * ($gutter/$siteWidth);
 	width: auto; 
 	max-width: none; 
 	min-width: 0; 
-	margin: 0  (-$gutter); 
+	margin: 0  (-$column-spacing); 
 }
 
 .row:before, .row:after { 
@@ -48,7 +59,7 @@ $gutterPercentage: 100% * ($gutter/$siteWidth);
 .row { *zoom: 1; }
 
 .row-pad{
-	padding-bottom:$gutter;
+	padding-bottom:$column-spacing;
 }
 
 /* Columns */
@@ -56,59 +67,16 @@ $gutterPercentage: 100% * ($gutter/$siteWidth);
 .columns { 
 	float: left; 
 	min-height: 1px; 
-	padding-right:$gutter; 
+	padding-right:$column-spacing; 
 	position: relative; 
 	@include generateBoxSizing;		
 }
 
-.one{
-	@include generateColumnWidth(1);
+@for $i from 1 through $columns{
+  .#{convert-number-to-word($i)}, .row .#{convert-number-to-word($i)}{
+    @include generateColumnWidth($i);
+  }
 }
-
-.two{
-	@include generateColumnWidth(2);
-}
-
-.three{
-	@include generateColumnWidth(3);
-}
-
-.four{
-	@include generateColumnWidth(4);
-}
-
-.five{
-	@include generateColumnWidth(5);
-}
-
-.six{
-	@include generateColumnWidth(6);
-}
-
-.seven{
-	@include generateColumnWidth(7);
-}
-
-.eight{
-	@include generateColumnWidth(8);
-}
-
-.nine{
-	@include generateColumnWidth(9);
-}
-
-.ten{
-	@include generateColumnWidth(10);
-}
-
-.eleven{
-	@include generateColumnWidth(11);
-}
-
-.twelve{
-	@include generateColumnWidth(12);
-}
-
 
 /* Content */
 
@@ -130,6 +98,6 @@ img, object, embed { max-width: 100%; height: auto; }
 		float: none;
 		margin-left: 0;
 		margin-right: 0;
-		padding-bottom:$gutter;		
+		padding-bottom:$column-spacing;		
 	}
 }
