@@ -1,14 +1,14 @@
 // Variables
 
 $columns: 12; /* 12 Column Grid */
-$columnWidth: (100/$columns); /* Column Width Percentage */
-$siteWidth: 960px;
-$minSiteWidth: 768px; 
-$maxSiteWidth: 100%; 
-$gutter: 10px;
+$column-width: (100/$columns); /* Column Width Percentage */
+$site-width: 960px;
+$min-site-width: 768px; 
+$max-site-width: 100%; 
+$column-spacing: 10px;
 
 @mixin generateColumnWidth ($i){
-	width: 1% * $columnWidth * $i;		
+	width: 1% * $column-width * $i;		
 }
 
 @mixin generateBoxSizing(){
@@ -18,10 +18,21 @@ $gutter: 10px;
 	*behavior: url(css/boxsizing.htc)
 }
 
+@function convert-number-to-word($num) {
+  $count:1;
+  @each $word in one,two,three,four,five,six,seven,eight,nine,ten,eleven,
+    twelve,thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,
+    twenty,twentyone,twentytwo,twentythree,twentyfour{
+    @if ($count == $num) { @return $word; }
+    $count: $count + 1;
+  }
+  @return "invalid";
+}
+
 .row { 	
-	max-width: $siteWidth; 
-	min-width: $minSiteWidth; 
-	width: $maxSiteWidth; 
+	max-width: $site-width; 
+	min-width: $min-site-width; 
+	width: $max-site-width; 
 	margin: 0 auto; 	
 	@include generateBoxSizing;
 }
@@ -32,7 +43,7 @@ $gutter: 10px;
 	width: auto; 
 	max-width: none; 
 	min-width: 0; 
-	margin: 0  -$gutter; 
+	margin: 0  (-$column-spacing); 
 }
 
 .row:before, .row:after { 
@@ -46,7 +57,7 @@ $gutter: 10px;
 .row { *zoom: 1; }
 
 .row-pad{
-	padding-bottom:$gutter;
+	padding-bottom:$column-spacing;
 }
 
 /* Columns */
@@ -54,59 +65,16 @@ $gutter: 10px;
 .columns { 
 	float: left; 
 	min-height: 1px; 
-	padding:0 $gutter; 
+	padding:0 $column-spacing; 
 	position: relative; 
 	@include generateBoxSizing;	
 }
 
-.one{
-	@include generateColumnWidth(1);
+@for $i from 1 through $columns{
+  .#{convert-number-to-word($i)}, .row .#{convert-number-to-word($i)}{
+    @include generateColumnWidth($i);
+  }
 }
-
-.two{
-	@include generateColumnWidth(2);
-}
-
-.three{
-	@include generateColumnWidth(3);
-}
-
-.four{
-	@include generateColumnWidth(4);
-}
-
-.five{
-	@include generateColumnWidth(5);
-}
-
-.six{
-	@include generateColumnWidth(6);
-}
-
-.seven{
-	@include generateColumnWidth(7);
-}
-
-.eight{
-	@include generateColumnWidth(8);
-}
-
-.nine{
-	@include generateColumnWidth(9);
-}
-
-.ten{
-	@include generateColumnWidth(10);
-}
-
-.eleven{
-	@include generateColumnWidth(11);
-}
-
-.twelve{
-	@include generateColumnWidth(12);
-}
-
 
 /* Content */
 
@@ -128,6 +96,6 @@ img, object, embed { max-width: 100%; height: auto; }
 		float: none;
 		margin-left: 0;
 		margin-right: 0;
-		padding-bottom:$gutter;		
+		padding-bottom:$column-spacing;		
 	}
 }
