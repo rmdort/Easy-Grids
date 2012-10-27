@@ -3,13 +3,13 @@
 $columns: 12; /* 12 Column Grid */
 $column-width: 100/$columns; /* Column Width Percentage */
 $site-width: 960px;
-$min-site-width: 768px; 
-$max-site-width: 100%; 
+$min-site-width: 768px;
+$max-site-width: 100%;
 $column-spacing: 15px;
 $column-spacingPercentage: 100% * ($column-spacing/$site-width);
 
 @mixin generateColumnWidth ($i){
-	width: 1% * $column-width * $i;		
+	width: 1% * $column-width * $i;
 }
 
 @mixin generateBoxSizing(){
@@ -30,27 +30,27 @@ $column-spacingPercentage: 100% * ($column-spacing/$site-width);
   @return "invalid";
 }
 
-.row { 	
-	max-width: $site-width; 
-	min-width: $min-site-width - $column-spacing; 
-	width: $max-site-width; 
-	margin: 0 auto; 
+.row {
+	max-width: $site-width;
+	min-width: $min-site-width - $column-spacing;
+	width: $max-site-width;
+	margin: 0 auto;
 	padding-left: $column-spacing;
 	@include generateBoxSizing;
 }
 
 /* Nested Rows */
 
-.row .row { 
-	width: auto; 
-	max-width: none; 
-	min-width: 0; 
-	margin: 0  (-$column-spacing); 
+.row .row {
+	width: auto;
+	max-width: none;
+	min-width: 0;
+	margin: 0  (-$column-spacing);
 }
 
-.row:before, .row:after { 
-	content: ""; 
-	display: table; 
+.row:before, .row:after {
+	content: "";
+	display: table;
 	clear: both;
 }
 
@@ -64,12 +64,12 @@ $column-spacingPercentage: 100% * ($column-spacing/$site-width);
 
 /* Columns */
 
-.columns { 
-	float: left; 
-	min-height: 1px; 
-	padding-right:$column-spacing; 
-	position: relative; 
-	@include generateBoxSizing;		
+.columns {
+	float: left;
+	min-height: 1px;
+	padding-right:$column-spacing;
+	position: relative;
+	@include generateBoxSizing;
 }
 
 @for $i from 1 through $columns{
@@ -85,19 +85,19 @@ img, object, embed { max-width: 100%; height: auto; }
 /* Mobile */
 
 @media handheld, only screen and (max-width: 767px) {
-	
+
 	.row {
 		width: 100%;
 		min-width: 0;
 		margin-left: 0;
-		margin-right: 0;		
+		margin-right: 0;
 	}
-	
-	.columns {
+
+	.columns, .row .columns {
 		width: auto;
 		float: none;
 		margin-left: 0;
 		margin-right: 0;
-		padding-bottom:$column-spacing;		
+		padding-bottom:$column-spacing;
 	}
 }

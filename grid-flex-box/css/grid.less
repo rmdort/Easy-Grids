@@ -2,13 +2,13 @@
 
 @columns: 12; /* 12 Column Grid */
 @siteWidth: 960px;
-@minSiteWidth: 768px; 
-@maxSiteWidth: 100%; 
+@minSiteWidth: 768px;
+@maxSiteWidth: 100%;
 @gutter: 10px;
 @gridMargin: 2.127663;
 
-.generateColumnWidth (@i){	
-	width: 1% * (100 - (@columns/@i - 1) * @gridMargin)/@columns * @i;			
+.generateColumnWidth (@i){
+	width: 1% * (100 - (@columns/@i - 1) * @gridMargin)/@columns * @i;
 }
 
 
@@ -16,33 +16,33 @@
 	padding: 0 @gutter;
 }
 
-.row { 	
-	max-width: @siteWidth; 
-	min-width: @minSiteWidth; 
-	width: @maxSiteWidth; 
-	margin: 0 auto; 		
+.row {
+	max-width: @siteWidth;
+	min-width: @minSiteWidth;
+	width: @maxSiteWidth;
+	margin: 0 auto;
 
 	display: -moz-box;
 	display: -webkit-flex;
 
 	-webkit-flex: 0 1 auto;
-	-webkit-flex-direction: row;	
+	-webkit-flex-direction: row;
 	-webkit-align-content: left;
-	-webkit-align-items: stretch;		
+	-webkit-align-items: stretch;
 }
 
 /* Nested Rows */
 
-.row .row { 
-	width: auto; 
-	max-width: none; 
-	min-width: 0; 	
+.row .row {
+	width: auto;
+	max-width: none;
+	min-width: 0;
 	margin: 0 -@gutter;
 }
 
-.row:before, .row:after { 
-	content: ""; 
-	display: table; 
+.row:before, .row:after {
+	content: "";
+	display: table;
 	clear: both;
 }
 
@@ -56,17 +56,17 @@
 
 /* Columns */
 
-.columns { 	
-	position: relative; 
-	padding: 0 @gutter;	
+.columns {
+	position: relative;
+	padding: 0 @gutter;
 }
 
-.columns:first-child{ 
-	margin-left: 0px; 
+.columns:first-child{
+	margin-left: 0px;
 }
 
 .one{
-	.generateColumnWidth(1);		
+	.generateColumnWidth(1);
 }
 
 .two{
@@ -106,7 +106,7 @@
 }
 
 .eleven{
-	.generateColumnWidth(11);	
+	.generateColumnWidth(11);
 }
 
 .twelve{
@@ -121,21 +121,21 @@ img, object, embed { max-width: 100%; height: auto; }
 /* Mobile */
 
 @media handheld, only screen and (max-width: 767px) {
-	
+
 	.row {
 		width: 100%;
 		min-width: 0;
 		margin-left: 0;
-		margin-right: 0;		
-		
+		margin-right: 0;
+
 		-webkit-flex-direction: column;
 	}
-	
-	.columns {		
+
+	.columns, .row .columns {
 		width: auto;
 		float: none;
 		margin-left: 0;
 		margin-right: 0;
-		padding-bottom:@gutter;				
+		padding-bottom:@gutter;
 	}
 }

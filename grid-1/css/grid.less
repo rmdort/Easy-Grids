@@ -3,12 +3,12 @@
 @columns: 12; /* 12 Column Grid */
 @columnWidth: (100/@columns); /* Column Width Percentage */
 @siteWidth: 960px;
-@minSiteWidth: 768px; 
-@maxSiteWidth: 100%; 
+@minSiteWidth: 768px;
+@maxSiteWidth: 100%;
 @gutter: 15px;
 
 .generateColumnWidth (@i){
-	width: 1% * @columnWidth * @i;	
+	width: 1% * @columnWidth * @i;
 }
 
 .generateBoxSizing(){
@@ -18,27 +18,27 @@
 	*behavior: url(css/boxsizing.htc)
 }
 
-.row { 	
-	max-width: @siteWidth; 
-	min-width: @minSiteWidth - @gutter; 
-	width: @maxSiteWidth; 
-	margin: 0 auto; 
+.row {
+	max-width: @siteWidth;
+	min-width: @minSiteWidth - @gutter;
+	width: @maxSiteWidth;
+	margin: 0 auto;
 	padding-left: @gutter;
 	.generateBoxSizing;
 }
 
 /* Nested Rows */
 
-.row .row { 
-	width: auto; 
-	max-width: none; 
-	min-width: 0; 
-	margin: 0  -@gutter; 
+.row .row {
+	width: auto;
+	max-width: none;
+	min-width: 0;
+	margin: 0  -@gutter;
 }
 
-.row:before, .row:after { 
-	content: ""; 
-	display: table; 
+.row:before, .row:after {
+	content: "";
+	display: table;
 	clear: both;
 }
 
@@ -52,12 +52,12 @@
 
 /* Columns */
 
-.columns { 
-	float: left; 
-	min-height: 1px; 
-	padding-right:@gutter; 
-	position: relative; 
-	.generateBoxSizing;	
+.columns {
+	float: left;
+	min-height: 1px;
+	padding-right:@gutter;
+	position: relative;
+	.generateBoxSizing;
 }
 
 .one{
@@ -116,19 +116,19 @@ img, object, embed { max-width: 100%; height: auto; }
 /* Mobile */
 
 @media handheld, only screen and (max-width: 767px) {
-	
+
 	.row {
 		width: 100%;
 		min-width: 0;
 		margin-left: 0;
-		margin-right: 0;		
+		margin-right: 0;
 	}
-	
-	.columns {
+
+	.columns, .row .columns {
 		width: auto;
 		float: none;
 		margin-left: 0;
 		margin-right: 0;
-		padding-bottom:@gutter;		
+		padding-bottom:@gutter;
 	}
 }
