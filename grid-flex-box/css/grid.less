@@ -2,6 +2,7 @@
 
 @columns: 12; /* 12 Column Grid */
 @siteWidth: 960px;
+<<<<<<< HEAD
 @minSiteWidth: 768px; 
 @maxSiteWidth: 100%; 
 @gutter: 10px;
@@ -9,6 +10,15 @@
 
 .generateColumnWidth (@i){	
 	width: 1% * (100 - (@columns/@i - 1) * @gridMargin)/@columns * @i;			
+=======
+@minSiteWidth: 768px;
+@maxSiteWidth: 100%;
+@gutter: 10px;
+@gridMargin: 2.127663;
+
+.generateColumnWidth (@i){
+	width: 1% * (100 - (@columns/@i - 1) * @gridMargin)/@columns * @i;
+>>>>>>> master
 }
 
 
@@ -16,23 +26,38 @@
 	padding: 0 @gutter;
 }
 
+<<<<<<< HEAD
 .row { 	
 	max-width: @siteWidth; 
 	min-width: @minSiteWidth; 
 	width: @maxSiteWidth; 
 	margin: 0 auto; 		
+=======
+.row {
+	max-width: @siteWidth;
+	min-width: @minSiteWidth;
+	width: @maxSiteWidth;
+	margin: 0 auto;
+>>>>>>> master
 
 	display: -moz-box;
 	display: -webkit-flex;
 
 	-webkit-flex: 0 1 auto;
+<<<<<<< HEAD
 	-webkit-flex-direction: row;	
 	-webkit-align-content: left;
 	-webkit-align-items: stretch;		
+=======
+	-webkit-flex-direction: row;
+	-webkit-align-content: left;
+	-webkit-align-items: stretch;
+>>>>>>> master
 }
 
 /* Nested Rows */
 
+<<<<<<< HEAD
 .row .row { 
 	width: auto; 
 	max-width: none; 
@@ -43,6 +68,18 @@
 .row:before, .row:after { 
 	content: ""; 
 	display: table; 
+=======
+.row .row {
+	width: auto;
+	max-width: none;
+	min-width: 0;
+	margin: 0 -@gutter;
+}
+
+.row:before, .row:after {
+	content: "";
+	display: table;
+>>>>>>> master
 	clear: both;
 }
 
@@ -56,6 +93,7 @@
 
 /* Columns */
 
+<<<<<<< HEAD
 .columns { 	
 	position: relative; 
 	padding: 0 @gutter;	
@@ -67,6 +105,19 @@
 
 .one{
 	.generateColumnWidth(1);		
+=======
+.columns {
+	position: relative;
+	padding: 0 @gutter;
+}
+
+.columns:first-child{
+	margin-left: 0px;
+}
+
+.one{
+	.generateColumnWidth(1);
+>>>>>>> master
 }
 
 .two{
@@ -106,7 +157,11 @@
 }
 
 .eleven{
+<<<<<<< HEAD
 	.generateColumnWidth(11);	
+=======
+	.generateColumnWidth(11);
+>>>>>>> master
 }
 
 .twelve{
@@ -121,21 +176,38 @@ img, object, embed { max-width: 100%; height: auto; }
 /* Mobile */
 
 @media handheld, only screen and (max-width: 767px) {
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> master
 	.row {
 		width: 100%;
 		min-width: 0;
 		margin-left: 0;
+<<<<<<< HEAD
 		margin-right: 0;		
 		
 		-webkit-flex-direction: column;
 	}
 	
 	.columns {		
+=======
+		margin-right: 0;
+
+		-webkit-flex-direction: column;
+	}
+
+	.columns, .row .columns {
+>>>>>>> master
 		width: auto;
 		float: none;
 		margin-left: 0;
 		margin-right: 0;
+<<<<<<< HEAD
 		padding-bottom:@gutter;				
+=======
+		padding-bottom:@gutter;
+>>>>>>> master
 	}
 }

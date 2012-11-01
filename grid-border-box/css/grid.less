@@ -1,39 +1,43 @@
 // Variables
 
 @columns: 12; /* 12 Column Grid */
+@columnWidth: (100/@columns); /* Column Width Percentage */
 @siteWidth: 960px;
-@minSiteWidth: 768px; 
-@maxSiteWidth: 100%; 
-@gutter: 15px;
-@gridMargin: 2.127663;
+@minSiteWidth: 768px;
+@maxSiteWidth: 100%;
+@gutter: 30px;
 
-.generateColumnWidth (@i){	
-	width: 1% * (100 - (@columns/@i - 1) * @gridMargin)/@columns * @i;	
+.generateColumnWidth (@i){
+	width: 1% * @columnWidth * @i;
 }
 
-
-.container{
-	padding: 0 @gutter;
+.generateBoxSizing(){
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	*behavior: url(css/boxsizing.htc)
 }
 
-.row { 	
-	max-width: @siteWidth; 
-	min-width: @minSiteWidth; 
-	width: @maxSiteWidth; 
-	margin: 0 auto; 		
+.row {
+	max-width: @siteWidth;
+	min-width: @minSiteWidth;
+	width: @maxSiteWidth;
+	margin: 0 auto;
+	.generateBoxSizing;
 }
 
 /* Nested Rows */
 
-.row .row { 
-	width: auto; 
-	max-width: none; 
-	min-width: 0; 	
+.row .row {
+	width: auto;
+	max-width: none;
+	min-width: 0;
+	margin: 0  -@gutter/2;
 }
 
-.row:before, .row:after { 
-	content: ""; 
-	display: table; 
+.row:before, .row:after {
+	content: "";
+	display: table;
 	clear: both;
 }
 
@@ -47,19 +51,16 @@
 
 /* Columns */
 
-.columns { 
-	float: left; 
-	min-height: 1px; 
-	margin-left: 1% * @gridMargin;
-	position: relative; 
-}
-
-.columns:first-child{ 
-	margin-left: 0px; 
+.columns {
+	float: left;
+	min-height: 1px;
+	padding:0 @gutter/2;
+	position: relative;
+	.generateBoxSizing;
 }
 
 .one{
-	.generateColumnWidth(1);	
+	.generateColumnWidth(1);
 }
 
 .two{
@@ -114,19 +115,20 @@ img, object, embed { max-width: 100%; height: auto; }
 /* Mobile */
 
 @media handheld, only screen and (max-width: 767px) {
-	
+
 	.row {
 		width: 100%;
 		min-width: 0;
 		margin-left: 0;
-		margin-right: 0;		
+		margin-right: 0;
+		padding-bottom:0;
 	}
-	
-	.columns {
+
+	.columns, .row .columns {
 		width: auto;
 		float: none;
 		margin-left: 0;
 		margin-right: 0;
-		padding-bottom:@gutter;		
+		padding-bottom:@gutter;
 	}
 }
