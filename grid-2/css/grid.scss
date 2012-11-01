@@ -43,7 +43,7 @@ $column-spacing: 10px;
 	width: auto;
 	max-width: none;
 	min-width: 0;
-	margin: 0  (-$column-spacing);
+	margin: 0  (-$column-spacing/2);
 }
 
 .row:before, .row:after {
@@ -65,7 +65,7 @@ $column-spacing: 10px;
 .columns {
 	float: left;
 	min-height: 1px;
-	padding:0 $column-spacing;
+	padding:0 $column-spacing/2;
 	position: relative;
 	@include generateBoxSizing;
 }
@@ -89,6 +89,7 @@ img, object, embed { max-width: 100%; height: auto; }
 		min-width: 0;
 		margin-left: 0;
 		margin-right: 0;
+		padding-bottom: 0;
 	}
 
 	.columns, .row .columns {
