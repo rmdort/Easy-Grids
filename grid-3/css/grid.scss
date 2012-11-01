@@ -4,7 +4,7 @@ $columns: 12; /* 12 Column Grid */
 $site-width: 960px;
 $min-site-width: 768px;
 $max-site-width: 100%;
-$column-spacing: 15px;
+$column-spacing: 20px;
 $grid-margin: 2.127663;
 
 @mixin generateColumnWidth ($i){

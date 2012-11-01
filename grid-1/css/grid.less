@@ -5,7 +5,7 @@
 @siteWidth: 960px;
 @minSiteWidth: 768px;
 @maxSiteWidth: 100%;
-@gutter: 15px;
+@gutter: 20px;
 
 .generateColumnWidth (@i){
 	width: 1% * @columnWidth * @i;
@@ -19,7 +19,7 @@
 }
 
 .row {
-	max-width: @siteWidth;
+	max-width: @siteWidth + @gutter;
 	min-width: @minSiteWidth - @gutter;
 	width: @maxSiteWidth;
 	margin: 0 auto;

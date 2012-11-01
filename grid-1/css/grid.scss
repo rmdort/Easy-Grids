@@ -5,7 +5,7 @@ $column-width: 100/$columns; /* Column Width Percentage */
 $site-width: 960px;
 $min-site-width: 768px;
 $max-site-width: 100%;
-$column-spacing: 15px;
+$column-spacing: 20px;
 $column-spacingPercentage: 100% * ($column-spacing/$site-width);
 
 @mixin generateColumnWidth ($i){
@@ -31,7 +31,7 @@ $column-spacingPercentage: 100% * ($column-spacing/$site-width);
 }
 
 .row {
-	max-width: $site-width;
+	max-width: $site-width + @gutter;
 	min-width: $min-site-width - $column-spacing;
 	width: $max-site-width;
 	margin: 0 auto;
